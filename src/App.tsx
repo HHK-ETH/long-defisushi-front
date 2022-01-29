@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Web3Provider } from '@ethersproject/providers';
 import Header from './components/Header';
 import Home from './components/Home';
+import Claim from './components/Claim';
 
 function getLibrary(provider: any) {
   const library = new Web3Provider(provider);
@@ -17,6 +18,9 @@ const App = (): JSX.Element => {
         <Web3ReactProvider getLibrary={getLibrary}>
           <Header />
           <Switch>
+            <Route path={'/claim/:id'}>
+              <Claim />
+            </Route>
             <Route path={'/'}>
               <Home />
             </Route>

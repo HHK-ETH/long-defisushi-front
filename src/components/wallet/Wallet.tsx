@@ -68,6 +68,7 @@ export function Wallet() {
 
           return (
             <Button
+              key={name}
               label={name}
               style={'w-full text-md ml-4 ' + bgColor}
               action={() => {
