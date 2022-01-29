@@ -8,6 +8,8 @@ export interface IAirdrop {
   merkle: any;
 }
 
+const AIRDROP_CONTRACT = '0xb1907fb94F23b46CC1bdA034B2a60bA4b18A3D84';
+
 const AIRDROPS: IAirdrop[] = [
   {
     id: 0,
@@ -18,4 +20,4 @@ const AIRDROPS: IAirdrop[] = [
   },
 ];
 
-export { AIRDROPS };
+export { AIRDROPS, AIRDROP_CONTRACT };

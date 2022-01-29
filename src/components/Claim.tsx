@@ -3,7 +3,7 @@ import { useWeb3React } from '@web3-react/core';
 import { BigNumber, Contract, providers } from 'ethers';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { AIRDROPS } from '../constant';
+import { AIRDROPS, AIRDROP_CONTRACT } from '../constant';
 import Button from './simple/Button';
 import airdropContractAbi from './../airdropContractAbi.json';
 import TxPendingModal from './simple/TxPendingModal';
@@ -21,11 +21,7 @@ const Claim = (): JSX.Element => {
   const claim = async () => {
     if (!connector || !account || !userAirdrop) return;
     const provider = new providers.Web3Provider(await connector.getProvider(), 'any');
-    const contract = new Contract(
-      '0xf01a09504b6577aff75023ea4013a7477d856170',
-      airdropContractAbi as any,
-      provider
-    ).connect(provider.getSigner());
+    const contract = new Contract(AIRDROP_CONTRACT, airdropContractAbi as any, provider).connect(provider.getSigner());
     const tx = await contract.claim(id, account, amountToMint, userAirdrop.amount, userAirdrop.proof);
     setTxLink('https://rinkeby.etherscan.io/tx/' + tx.hash);
     await provider.waitForTransaction(tx.hash, 1);
@@ -37,7 +33,7 @@ const Claim = (): JSX.Element => {
     const fetchClaimed = async () => {
       if (!connector || !account) return;
       const provider = new providers.Web3Provider(await connector.getProvider(), 'any');
-      const contract = new Contract('0xf01a09504b6577aff75023ea4013a7477d856170', airdropContractAbi as any, provider);
+      const contract = new Contract(AIRDROP_CONTRACT, airdropContractAbi as any, provider);
       const alreadyClaimed: BigNumber = await contract.claimed(id, account);
       setMaxAvailableAmount((userAirdrop ? userAirdrop.amount : 0) - alreadyClaimed.toNumber());
     };
