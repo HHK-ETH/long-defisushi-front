@@ -7,7 +7,10 @@ export const injected = new InjectedConnector({
 });
 
 export const walletconnect = new WalletConnectConnector({
-  rpc: { 1: 'https://eth-mainnet.alchemyapi.io/v2/Y1q21D8WUrAEbkgvEIcnAv5V1R8DN6XL' },
+  rpc: {
+    1: 'https://eth-mainnet.alchemyapi.io/v2/Y1q21D8WUrAEbkgvEIcnAv5V1R8DN6XL',
+    4: 'https://eth-rinkeby.alchemyapi.io/v2/i_mPEFZnKMFp5715LvbJJzjsRc4eGFRl',
+  },
   qrcode: true,
 });
 
