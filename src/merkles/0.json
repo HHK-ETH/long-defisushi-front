@@ -1,0 +1,13 @@
+{
+  "route": "0x0",
+  "users": {
+    "0xB059CE4484417EB8279C65956b594d26A6dAaF10": {
+      "amount": 2,
+      "proof": ["0x7ea4845bab981cb1e1329a2c1861e24e486302917a8a99cbd8eccc9c41990994"]
+    },
+    "0x8d53B917357825eC8A17f4aaD361F144feCf3229": {
+      "amount": 2,
+      "proof": ["0x89770feaeb1adb13806622b9c370c721374f7033a7cfa365a39639bef5279626"]
+    }
+  }
+}
