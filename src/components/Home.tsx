@@ -17,8 +17,8 @@ const Home = (): JSX.Element => {
           {!active && <div>Please connect your wallet.</div>}
           {active && (
             <div className="grid grid-cols-4 gap-6 p-16">
-              {AIRDROPS.map((drop: IAirdrop) => {
-                return <AirdropBox airdrop={drop} />;
+              {Object.keys(AIRDROPS).map((id: string) => {
+                return <AirdropBox key={id} airdrop={AIRDROPS[id]} />;
               })}
             </div>
           )}

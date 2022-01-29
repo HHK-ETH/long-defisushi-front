@@ -12,7 +12,7 @@ const Claim = (): JSX.Element => {
   const context = useWeb3React<Web3Provider>();
   const { active, connector, account } = context;
   const { id }: { id: string } = useParams();
-  const airdrop = AIRDROPS[parseInt(id, 10)];
+  const airdrop = AIRDROPS[id];
   const userAirdrop = airdrop.merkle.users[account ? account : ''];
   const [amountToMint, setAmountToMint] = useState(1);
   const [txLink, setTxLink] = useState('');
