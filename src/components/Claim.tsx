@@ -38,7 +38,7 @@ const Claim = (): JSX.Element => {
       setMaxAvailableAmount((userAirdrop ? userAirdrop.amount : 0) - alreadyClaimed.toNumber());
     };
     fetchClaimed();
-  }, [active, account, connector, userAirdrop, id]);
+  }, [active, account, connector, userAirdrop, id, txLink]);
 
   if (!active) return <div className="text-center">Please connect your wallet.</div>;
 
