@@ -1,13 +1,13 @@
 {
-  "root": "0x27e15a7e7182a584f66a580635897c93c162a56c02f7a0aabf3e58b5d8ade6e3",
+  "root": "0xb664079c8df2f083e4f5d222bc717858fac2e6f57235b05d0f356263ee652f20",
   "users": {
     "0xB059CE4484417EB8279C65956b594d26A6dAaF10": {
       "amount": 2,
-      "proof": ["0x7ea4845bab981cb1e1329a2c1861e24e486302917a8a99cbd8eccc9c41990994"]
+      "proof": ["0x0e8ea6b05a2df664571b365bcaffe29caddcf1b23dd569f878ed75d77adf4332"]
     },
     "0x8d53B917357825eC8A17f4aaD361F144feCf3229": {
       "amount": 2,
-      "proof": ["0x89770feaeb1adb13806622b9c370c721374f7033a7cfa365a39639bef5279626"]
+      "proof": ["0x4e23efc27ce49d413ce1f7cd52e8cd2ee6653d9e2c0c60687883a85e8194f30c"]
     }
   }
 }
