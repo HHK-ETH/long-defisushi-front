@@ -31,7 +31,7 @@ const Claim = (): JSX.Element => {
 
   useEffect(() => {
     const fetchClaimed = async () => {
-      if (!connector || !account) return;
+      if (!connector || !account || txLink !== '') return;
       const provider = new providers.Web3Provider(await connector.getProvider(), 'any');
       const contract = new Contract(AIRDROP_CONTRACT, airdropContractAbi as any, provider);
       const alreadyClaimed: BigNumber = await contract.claimed(id, account);
