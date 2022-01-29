@@ -12,7 +12,7 @@ const TxPendingModal = ({ txPending }: { txPending: string }): JSX.Element => {
       leaveFrom="opacity-100"
       leaveTo="opacity-0"
     >
-      <div className={'bg-pink-500 text-white p-2 text-center shadow-2xl rounded-lg absolute top-18 right-6'}>
+      <div className={'bg-gray-100 p-2 text-center shadow-2xl rounded-lg absolute top-18 right-6'}>
         <a className={'underline'} href={txPending} target={'_blank'} rel={'noreferrer'}>
           Transaction sent.
         </a>
