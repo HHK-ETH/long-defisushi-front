@@ -1,0 +1,319 @@
+[
+  {
+    "type": "constructor",
+    "inputs": [
+      {
+        "internalType": "contract ERC1155",
+        "name": "tokenAddress",
+        "type": "address"
+      }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "adminInfos",
+    "inputs": [],
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "_owner",
+        "type": "address"
+      },
+      {
+        "internalType": "contract ERC1155",
+        "name": "_token",
+        "type": "address"
+      }
+    ],
+    "constant": null,
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "claim",
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "to",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "maxAmount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bytes32[]",
+        "name": "proof",
+        "type": "bytes32[]"
+      }
+    ],
+    "outputs": [],
+    "constant": null,
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "claimed",
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "constant": null,
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "dropData",
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "internalType": "struct DropData",
+        "name": "data",
+        "type": "tuple",
+        "components": [
+          {
+            "type": "bytes32"
+          },
+          {
+            "type": "uint256"
+          }
+        ]
+      }
+    ],
+    "constant": null,
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "onERC1155BatchReceived",
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "operator",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "from",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "ids",
+        "type": "uint256[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "amounts",
+        "type": "uint256[]"
+      },
+      {
+        "internalType": "bytes",
+        "name": "data",
+        "type": "bytes"
+      }
+    ],
+    "outputs": [
+      {
+        "internalType": "bytes4",
+        "name": "",
+        "type": "bytes4"
+      }
+    ],
+    "constant": null,
+    "stateMutability": "pure"
+  },
+  {
+    "type": "function",
+    "name": "onERC1155Received",
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "operator",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "from",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bytes",
+        "name": "data",
+        "type": "bytes"
+      }
+    ],
+    "outputs": [
+      {
+        "internalType": "bytes4",
+        "name": "",
+        "type": "bytes4"
+      }
+    ],
+    "constant": null,
+    "stateMutability": "pure"
+  },
+  {
+    "type": "function",
+    "name": "setDrop",
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "root",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "uint256",
+        "name": "expiry",
+        "type": "uint256"
+      }
+    ],
+    "outputs": [],
+    "constant": null,
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "setToken",
+    "inputs": [
+      {
+        "internalType": "contract ERC1155",
+        "name": "newToken",
+        "type": "address"
+      }
+    ],
+    "outputs": [],
+    "constant": null,
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "transferOwnership",
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "outputs": [],
+    "constant": null,
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "event",
+    "name": "Claimed",
+    "inputs": [
+      {
+        "name": "id",
+        "type": "uint256",
+        "indexed": true
+      },
+      {
+        "name": "to",
+        "type": "address",
+        "indexed": true
+      },
+      {
+        "name": "amount",
+        "type": "uint256",
+        "indexed": false
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "SetDrop",
+    "inputs": [
+      {
+        "name": "id",
+        "type": "uint256",
+        "indexed": true
+      },
+      {
+        "name": "root",
+        "type": "bytes32",
+        "indexed": false
+      },
+      {
+        "name": "maxClaimDate",
+        "type": "uint256",
+        "indexed": false
+      },
+      {
+        "name": "token",
+        "type": "address",
+        "indexed": false
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "error",
+    "name": "Error_DateExpired",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "Error_InvalidAmount",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "Error_InvalidProof",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "Error_NotOwner",
+    "inputs": []
+  }
+]
