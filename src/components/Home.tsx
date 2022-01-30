@@ -12,8 +12,10 @@ const Home = (): JSX.Element => {
     <>
       <div className="container mx-auto">
         <div className="text-center my-36">
-          <img className="h-36 mx-auto" src={sushichef} alt="sushichef" />
-          <h1 className="text-2xl italic text-black">Collect DefiSushi Genesis NFTs and claim exclusive airdrops!</h1>
+          <img className="mx-auto h-36" src={sushichef} alt="sushichef" />
+          <h1 className="text-2xl italic text-black">
+            A Community-Driven Web3 Model. Receive NFT Airdrops by Loyalty Mining!
+          </h1>
           {!active && <div>Please connect your wallet.</div>}
           {active && (
             <div className="grid grid-cols-4 gap-6 p-16">

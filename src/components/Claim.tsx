@@ -46,19 +46,20 @@ const Claim = (): JSX.Element => {
     <>
       <TxPendingModal txPending={txLink} />
       <div className="container mx-auto">
-        <div className="text-center rounded-xl bg-gray-50 px-8 py-16 mx-48 my-24 shadow-xl">
+        <div className="px-8 py-16 mx-48 my-24 text-center shadow-xl rounded-xl bg-gray-50">
           <h1 className="text-3xl italic">{airdrop.title}</h1>
+          <h1 className="text-xl">Airdrop Criteria: {airdrop.criteria}</h1>
           <div className="grid grid-cols-2 gap-8 mt-16">
             <img className="w-1/2 mx-auto" src={airdrop.img} alt="nft" />
-            <div className="text-center text-lg my-auto">
-              <h3 className="text-2xl -mt-8">
-                Claim expire in {((airdrop.expiry - new Date().getTime() / 1000) / 3600).toFixed(2)} hours
+            <div className="my-auto text-lg text-center">
+              <h3 className="-mt-8 text-2xl">
+                {((airdrop.expiry - new Date().getTime() / 1000) / 3600).toFixed(2)} hours left to claim!
               </h3>
-              <h3 className="text-2xl">You are elligible to mint {maxAvailable} NFT(s)</h3>
+              <h3 className="text-2xl">You are eligible to mint {maxAvailable} NFT(s)</h3>
               <div className="w-1/2 mx-auto mt-16">
                 <label>Amount:</label>
                 <input
-                  className="bg-yellow-100 rounded-full m-2 text-center w-1/2"
+                  className="w-1/2 m-2 text-center bg-yellow-100 rounded-full"
                   type={'number'}
                   value={amountToMint}
                   onChange={(e) => {
