@@ -20,7 +20,8 @@ const Header = (): JSX.Element => {
       <ConnectModal open={open} setOpen={setOpen} />
       <nav className="p-6 mb-6">
         <Link className="float-left -mt-2 italic text-md" to={'/'}>
-          <img className={'h-10 inline-block mr-2'} alt={'chain-logo'} src={sushichef} /> Long defisushi
+          <img className={'h-10 inline-block mr-2'} alt={'chain-logo'} src={sushichef} />
+          long defisushi
         </Link>
         <Button style="text-lg float-right -mt-1" action={() => setOpen(true)} label={connectBtnLabel} />
       </nav>
