@@ -13,7 +13,7 @@ const Claim = (): JSX.Element => {
   const { active, connector, account } = context;
   const { id }: { id: string } = useParams();
   const airdrop = AIRDROPS[id];
-  const userAirdrop = airdrop.merkle.users[account ? account : ''];
+  const userAirdrop = airdrop.merkle.users[account ? account.toLocaleLowerCase() : ''];
   const [amountToMint, setAmountToMint] = useState(1);
   const [txLink, setTxLink] = useState('');
   const [maxAvailable, setMaxAvailableAmount] = useState(userAirdrop ? userAirdrop.amount : 0);
@@ -46,7 +46,7 @@ const Claim = (): JSX.Element => {
     <>
       <TxPendingModal txPending={txLink} />
       <div className="container mx-auto">
-        <div className="px-8 py-16 mx-48 my-24 text-center shadow-xl rounded-xl bg-gray-50">
+        <div className="px-8 py-16 mx-48 my-24 text-center shadow-xl bg-gray-50 rounded-xl">
           <h1 className="text-3xl italic">{airdrop.title}</h1>
           <h1 className="text-xl">Airdrop Criteria: {airdrop.criteria}</h1>
           <div className="grid grid-cols-2 gap-8 mt-16">
