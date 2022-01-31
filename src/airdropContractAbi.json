@@ -60,7 +60,7 @@
     ],
     "outputs": [],
     "constant": null,
-    "stateMutability": "nonpayable"
+    "stateMutability": "payable"
   },
   {
     "type": "function",
@@ -105,6 +105,9 @@
         "components": [
           {
             "type": "bytes32"
+          },
+          {
+            "type": "uint256"
           },
           {
             "type": "uint256"
@@ -213,6 +216,11 @@
         "internalType": "uint256",
         "name": "expiry",
         "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "price",
+        "type": "uint256"
       }
     ],
     "outputs": [],
@@ -243,6 +251,14 @@
         "type": "address"
       }
     ],
+    "outputs": [],
+    "constant": null,
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "withdraw",
+    "inputs": [],
     "outputs": [],
     "constant": null,
     "stateMutability": "nonpayable"
@@ -292,6 +308,11 @@
         "name": "token",
         "type": "address",
         "indexed": false
+      },
+      {
+        "name": "price",
+        "type": "uint256",
+        "indexed": false
       }
     ],
     "anonymous": false
@@ -304,6 +325,11 @@
   {
     "type": "error",
     "name": "Error_InvalidAmount",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "Error_InvalidPayment",
     "inputs": []
   },
   {

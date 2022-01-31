@@ -7,6 +7,7 @@ import { AIRDROPS, AIRDROP_CONTRACT } from '../constant';
 import Button from './simple/Button';
 import airdropContractAbi from './../airdropContractAbi.json';
 import TxPendingModal from './simple/TxPendingModal';
+import { parseUnits } from 'ethers/lib/utils';
 
 const Claim = (): JSX.Element => {
   const context = useWeb3React<Web3Provider>();
@@ -22,7 +23,9 @@ const Claim = (): JSX.Element => {
     if (!connector || !account || !userAirdrop) return;
     const provider = new providers.Web3Provider(await connector.getProvider(), 'any');
     const contract = new Contract(AIRDROP_CONTRACT, airdropContractAbi as any, provider).connect(provider.getSigner());
-    const tx = await contract.claim(id, account, amountToMint, userAirdrop.amount, userAirdrop.proof);
+    const tx = await contract.claim(id, account, amountToMint, userAirdrop.amount, userAirdrop.proof, {
+      value: parseUnits((0.02 * amountToMint).toString(), 'ether'),
+    });
     setTxLink('https://rinkeby.etherscan.io/tx/' + tx.hash);
     await provider.waitForTransaction(tx.hash, 1);
     setTxLink('');
