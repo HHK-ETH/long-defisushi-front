@@ -73,7 +73,7 @@ const Claim = (): JSX.Element => {
                   value={amountToMint}
                   onChange={(e) => {
                     let amount = parseInt(e.target.value, 10);
-                    //if (amount > maxAvailable) amount = maxAvailable;
+                    if (amount > maxAvailable) amount = maxAvailable;
                     if (amount < 1) amount = 1;
                     setAmountToMint(amount);
                   }}
