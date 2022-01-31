@@ -7,7 +7,7 @@ import { AIRDROPS, AIRDROP_CONTRACT } from '../constant';
 import Button from './simple/Button';
 import airdropContractAbi from './../airdropContractAbi.json';
 import TxPendingModal from './simple/TxPendingModal';
-import { parseUnits } from 'ethers/lib/utils';
+import { formatEther, parseUnits } from 'ethers/lib/utils';
 
 const Claim = (): JSX.Element => {
   const context = useWeb3React<Web3Provider>();
@@ -18,9 +18,14 @@ const Claim = (): JSX.Element => {
   const [amountToMint, setAmountToMint] = useState(1);
   const [txLink, setTxLink] = useState('');
   const [maxAvailable, setMaxAvailableAmount] = useState(userAirdrop ? userAirdrop.amount : 0);
+  const [balance, setBalance] = useState(BigNumber.from(0));
 
   const claim = async () => {
     if (!connector || !account || !userAirdrop) return;
+    if (parseFloat(formatEther(balance)) < airdrop.price * amountToMint) {
+      alert("You don't have enough ETH to pay.");
+      return;
+    }
     const provider = new providers.Web3Provider(await connector.getProvider(), 'any');
     const contract = new Contract(AIRDROP_CONTRACT, airdropContractAbi as any, provider).connect(provider.getSigner());
     const tx = await contract.claim(id, account, amountToMint, userAirdrop.amount, userAirdrop.proof, {
@@ -36,6 +41,7 @@ const Claim = (): JSX.Element => {
     const fetchClaimed = async () => {
       if (!connector || !account || txLink !== '') return;
       const provider = new providers.Web3Provider(await connector.getProvider(), 'any');
+      setBalance(await provider.getBalance(account));
       const contract = new Contract(AIRDROP_CONTRACT, airdropContractAbi as any, provider);
       const alreadyClaimed: BigNumber = await contract.claimed(id, account);
       setMaxAvailableAmount((userAirdrop ? userAirdrop.amount : 0) - alreadyClaimed.toNumber());
@@ -67,13 +73,14 @@ const Claim = (): JSX.Element => {
                   value={amountToMint}
                   onChange={(e) => {
                     let amount = parseInt(e.target.value, 10);
-                    if (amount > maxAvailable) amount = maxAvailable;
+                    //if (amount > maxAvailable) amount = maxAvailable;
                     if (amount < 1) amount = 1;
                     setAmountToMint(amount);
                   }}
                 />
               </div>
               <Button style="text-lg w-1/2" action={() => claim()} label="Mint" />
+              <p className="mt-2 text-sm">Total cost (excluding gas): {airdrop.price * amountToMint} ETH</p>
             </div>
           </div>
         </div>

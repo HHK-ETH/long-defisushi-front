@@ -4,6 +4,7 @@ export interface IAirdrop {
   id: string;
   title: string;
   criteria: string;
+  price: number;
   expiry: number;
   img: string;
   merkle: any;
@@ -16,6 +17,7 @@ const AIRDROPS: { [id: string]: IAirdrop } = {
     id: '63924037405401073795402369854177288236567119759998004639706615144753819287750',
     title: 'Huat Ah',
     criteria: 'Must own genesis NFT',
+    price: 0.02,
     expiry: 1643799600,
     img: 'https://lh3.googleusercontent.com/iNRU9N9dgyC-XkUsv1vd1DlI2qirj1M6RHQZYafun6ny_mVSN5ApLNrRCrgVOdEkICKMGgLbpNepkLd--Yd-oY5N6ETc6AHKl9g2=w600',
     merkle: merkleCNY,
