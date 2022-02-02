@@ -19,6 +19,7 @@ const Claim = (): JSX.Element => {
   const [txLink, setTxLink] = useState('');
   const [maxAvailable, setMaxAvailableAmount] = useState(userAirdrop ? userAirdrop.amount : 0);
   const [balance, setBalance] = useState(BigNumber.from(0));
+  const timeLeft = (airdrop.expiry - new Date().getTime() / 1000) / 3600;
 
   const claim = async () => {
     if (!connector || !account || !userAirdrop) return;
@@ -62,7 +63,7 @@ const Claim = (): JSX.Element => {
             <img className="w-1/2 mx-auto" src={airdrop.img} alt="nft" />
             <div className="my-auto text-lg text-center">
               <h3 className="-mt-8 text-2xl">
-                {((airdrop.expiry - new Date().getTime() / 1000) / 3600).toFixed(2)} hours left to claim!
+                {timeLeft > 0 ? timeLeft.toFixed(2) + ' hours left to claim!' : 'Claim period expired.'}
               </h3>
               <h3 className="text-2xl">You are eligible to mint {maxAvailable} NFT(s)</h3>
               <div className="w-1/2 mx-auto mt-16">
@@ -79,7 +80,8 @@ const Claim = (): JSX.Element => {
                   }}
                 />
               </div>
-              <Button style="text-lg w-1/2" action={() => claim()} label="Mint" />
+              {timeLeft > 0 && <Button style="text-lg w-1/2" action={() => claim()} label={'Mint'} />}
+              {timeLeft < 0 && <Button style="text-lg w-1/2" action={() => {}} label={'Claim expired'} />}
               <p className="mt-2 text-sm">Total cost (excluding gas): {airdrop.price * amountToMint} ETH</p>
             </div>
           </div>

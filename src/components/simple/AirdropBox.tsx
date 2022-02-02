@@ -3,15 +3,19 @@ import { IAirdrop } from '../../constant';
 import { Link } from 'react-router-dom';
 
 const AirdropBox = ({ airdrop }: { airdrop: IAirdrop }): JSX.Element => {
-  const btnLabel = airdrop.expiry > new Date().getTime() / 1000 ? 'Claim now' : 'Airdrop expired';
+  const timeLeft = (airdrop.expiry - new Date().getTime() / 1000) / 3600;
+  const btnLabel = timeLeft > 0 ? 'Claim now' : 'Claim expired';
 
   return (
-    <div className="text-center rounded-xl bg-gray-50 p-4 shadow-xl">
-      <h1 className="text-xl font-bold text-yellow-700 italic">{airdrop.title}</h1>
-      <img className="h-36 mx-auto m-4" src={airdrop.img} alt="nft" />
-      <Link to={'/claim/' + airdrop.id}>
-        <Button label={btnLabel} style="text-lg" action={() => {}} />
-      </Link>
+    <div className="p-4 text-center shadow-xl rounded-xl bg-gray-50">
+      <h1 className="text-xl italic font-bold text-yellow-700">{airdrop.title}</h1>
+      <img className="m-4 mx-auto h-36" src={airdrop.img} alt="nft" />
+      {timeLeft > 0 && (
+        <Link to={'/claim/' + airdrop.id}>
+          <Button label={btnLabel} style="text-lg" action={() => {}} />
+        </Link>
+      )}
+      {timeLeft < 0 && <Button label={btnLabel} style="text-lg" action={() => {}} />}
     </div>
   );
 };
